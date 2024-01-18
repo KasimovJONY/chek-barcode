@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 150px;
+            margin-top: 50px;
+        }
+
+        h3 {
+            font-weight: bold;
+            text-align: center;
+            font-size: 80px;
+        }
+
+        #myDiv {
+            border: thick solid black;
+            display: flex;
+            width: 100%;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-width: 4px;
+            /* padding-bottom: 1px; */
+
+        }
+
+        #myDiv img {
+            width: 240px;
+        }
+
+
+
+        .narxi,
+        .barcode-container {
+            width: 42%;
+            /* 50% dan kamroq maydoni */
+            height: 180px;
+            box-sizing: border-box;
+            margin-bottom: 2px;
+            /*ichki orqa bosilganliq uchun, kerakmasligi mumkin */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .narxi {
+            font-size: 12px;
+            /* border: 2px solid; */
+            width: 57%;
+        }
+
+
+        #barcode {
+            width: 100%;
+            height: 80% !important;
+        }
+
+        .klyuch {
+            padding: 30px 0px;
+            font-family: sans-serif;
+        }
+
+        .nomi {
+
+            margin-bottom: 90px;
+
+        }
+
+        .raz-bumagi,
+        .printer {
+            width: 350px;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .raz-bumagi label,
+        .printer label {
+            font-size: 18px;
+            font-weight: 600;
+            font-family: Arial;
+        }
+
+        .raz-bumagi select,
+        .printer select {
+            width: 150px;
+            height: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            border: 1px solid rgb(0, 0, 0);
+            background-color: rgb(211, 211, 211);
+            font-family: sans-serif;
+            color: #000000;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .printer select {
+            width: 250px;
+        }
+
+
+        footer {
+            position: fixed;
+            bottom: 0px;
+            background-color: #e6e6e6;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-right: 60px;
+
+
+        }
+
+        footer button {
+            width: 100px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            background-color: #0022ff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+
+        }
+
+        .copy label {
+            padding: 0px 10px 0px 10px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: sans-serif;
+        }
+
+        #copy {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 10px;
+            border: 1px solid rgb(0, 0, 0);
+            background-color: rgb(211, 211, 211);
+            font-family: sans-serif;
+            color: #000000;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .btn2 button {
+            color: #ffffff;
+        }
+
+
+        @media print {
+
+            .flex-container {
+                display: flex;
+                justify-content: space-between;
+                height: 70px;
+                margin-top: 1px;
+            }
+
+            h3 {
+                font-weight: bold;
+                text-align: center;
+                font-size: 20px;
+            }
+
+            .narxi h3 {
+                font-size: 14px;
+            }
+
+            #myDiv {
+                border: thick solid black;
+                display: flex;
+                width: 100%;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                border-width: 1px;
+                padding-bottom: 1px;
+
+            }
+
+            #myDiv img {
+                width: 60px;
+                height: 40px;
+                padding: 5px;
+            }
+
+
+            .narxi,
+            .barcode-container {
+                width: 42%;
+                /* 50% dan kamroq maydoni */
+                height: 70px;
+                box-sizing: border-box;
+                margin-bottom: 2px;
+                /*ichki orqa bosilganliq uchun, kerakmasligi mumkin */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .narxi {
+                /* border: 2px solid; */
+                font-size: 12px;
+                width: 57%;
+            }
+
+            #barcode {
+                width: 100%;
+                height: 80% !important;
+            }
+
+            .nomi {
+                margin-bottom: 1px;
+            }
+
+            .klyuch {
+                margin-top: 1px;
+                padding: 10px 0px;
+            }
+
+            footer {
+                display: none;
+            }
+
+
+        }
+
+
+
+        /* --------------------------------------------- */
+    </style>
+
+
+</head>
+
+<body>
+    <!-- <button onclick="window.print();">
+    print
+    </button>  -->
+    <div id="myDiv">
+        <img class="img" src="JSBarcode/img/ipakyoli.png">
+        <h3>IPAK YO'LI</h3>
+    </div>
+    <div class="flex-container">
+        <div class="narxi">
+            <h3>10 500 000 000</h3>
+        </div>
+        <div class="barcode-container">
+            <svg id="barcode"></svg>
+            <script src='JSBarcode/jsbarcode (2).js'></script>
+            <script>
+                JsBarcode("#barcode", "123432521244", {
+                    fontSize: "20px",
+                    height: "100%" /* 64% dan 100% ga o'zgartirildi */
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="nomi">
+        <h3 class="klyuch">Klyuch</h3>
+    </div>
+
+
+
+
+    <footer class="page-footer">
+
+        <div class="printer">
+            <label for="print">Принтер</label>
+            <select id="print" aria-label="Принтер">
+                <option value="Argox A-50 PPLB/local/">Argox A-50 PPLB</option>
+
+                <option value="Argox CP-3140EX PPLB/local/">Argox CP-3140EX PPLB</option>
+
+                <option value="XP-80C/local/">XP-80C</option>
+
+                <option value="Fax/local/">Fax</option>
+
+                <option value="Microsoft XPS Document Writer/local/">Microsoft XPS Document Writer</option>
+
+                <option value="Microsoft Print to PDF/local/">Microsoft Print to PDF</option>
+
+            </select>
+        </div>
+
+        <div class="raz-bumagi">
+            <label for="select">Размер бумаги</label>
+            <select id="select" aria-label="Размер бумаги">
+
+                <option
+                    value={&quot;custom_display_name&quot;:&quot;USER&quot;,&quot;height_microns&quot;:152400,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:1251,&quot;imageable_area_right_microns&quot;:102851,&quot;imageable_area_top_microns&quot;:152400,&quot;is_default&quot;:true,&quot;vendor_id&quot;:&quot;256&quot;,&quot;width_microns&quot;:104100}>
+                    USER</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;2 x 1&quot;,&quot;height_microns&quot;:53300,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:25400,&quot;imageable_area_top_microns&quot;:53300,&quot;vendor_id&quot;:&quot;268&quot;,&quot;width_microns&quot;:25400}">
+                    2 x 1</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;2 x 4&quot;,&quot;height_microns&quot;:53300,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:40000,&quot;imageable_area_top_microns&quot;:53300,&quot;vendor_id&quot;:&quot;269&quot;,&quot;width_microns&quot;:40000}">
+                    2 x 4</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;2.25 x 1.25&quot;,&quot;height_microns&quot;:59700,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:31800,&quot;imageable_area_top_microns&quot;:59700,&quot;vendor_id&quot;:&quot;270&quot;,&quot;width_microns&quot;:31800}">
+                    2.25 x 1.25</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;2.50 x 0.50&quot;,&quot;height_microns&quot;:66000,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:12700,&quot;imageable_area_top_microns&quot;:66000,&quot;vendor_id&quot;:&quot;271&quot;,&quot;width_microns&quot;:12700}">
+                    2.50 x 0.50</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;4 x 1&quot;,&quot;height_microns&quot;:104100,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:25400,&quot;imageable_area_top_microns&quot;:104100,&quot;vendor_id&quot;:&quot;272&quot;,&quot;width_microns&quot;:25400}">
+                    4 x 1</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;4 x 3&quot;,&quot;height_microns&quot;:104100,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:76200,&quot;imageable_area_top_microns&quot;:104100,&quot;vendor_id&quot;:&quot;273&quot;,&quot;width_microns&quot;:76200}">
+                    4 x 3</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;4 x 4&quot;,&quot;height_microns&quot;:104100,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:101600,&quot;imageable_area_top_microns&quot;:104100,&quot;vendor_id&quot;:&quot;274&quot;,&quot;width_microns&quot;:101600}">
+                    4 x 4</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;4 x 5&quot;,&quot;height_microns&quot;:127000,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:104100,&quot;imageable_area_top_microns&quot;:127000,&quot;vendor_id&quot;:&quot;275&quot;,&quot;width_microns&quot;:104100}">
+                    4 x 5</option>
+
+                <option
+                    value="{&quot;custom_display_name&quot;:&quot;4 x 6&quot;,&quot;height_microns&quot;:152400,&quot;imageable_area_bottom_microns&quot;:0,&quot;imageable_area_left_microns&quot;:0,&quot;imageable_area_right_microns&quot;:104100,&quot;imageable_area_top_microns&quot;:152400,&quot;vendor_id&quot;:&quot;276&quot;,&quot;width_microns&quot;:104100}">
+                    4 x 6</option>
+            </select>
+        </div>
+
+
+        <div class="copy">
+            <label for="copy">Копии</label>
+            <input type="number" id="copy">
+        </div>
+
+        <div class="btn2">
+            <button class="print-button">
+                Печать...
+            </button>
+        </div>
+
+    </footer>
+
+
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js">
+        function chek(goodsId) {
+            console.log(" working ");
+            var myWindow = window.open(" ", " ", "width=100,heigth=100");
+            $.ajax({
+                url: '192.168.1.3:8080/a1magazin/main.do?mode=print_barcode_json&goodsId=' + goodsId,
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    myWindow.document.write('<head><link rel=\"preconnect\" href=\"https:\/\/fonts.googleapis.com\"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Taviraj:wght@200;300;400;500;700;900&display=swap\" rel=\"stylesheet\"> ');
+                    //myWindow.document.+
+                    ('<link rel="stylesheet" href="plugins/JSBarcode/jsbarcode.js"/>');
+                    myWindow.document.write('</head>');
+                    myWindow.document.write('<style>');
+                    myWindow.document.write('* { margin: 0; padding: 0; }');
+                    myWindow.document.write('html, body { width: 100%; height: 100%; }');
+                    myWindow.document.write('#myDiv { border: thick solid black; display: flex; width: 100%; position: relative; justify-content: center; align-items: center; text-align: center; border-width: 1px; }');
+                    myWindow.document.write('.flex-container { display: flex; justify-content: space-between; }');
+                    myWindow.document.write('.narxi, .barcode-container { width: 48%; box-sizing: border-box; margin-bottom: 5px; }');
+                    myWindow.document.write('#barcode { width: 100%; height: 80% !important; }');
+                    myWindow.document.write('h3 { text-align: center; font-size: 20px; }');
+                    myWindow.document.write('@media print { html, body { width: 100% !important; height: 100% !important; } .flex-container { display: flex; justify-content: space-between; } .narxi, .barcode-container { width: 48%; box-sizing: border-box; margin-bottom: 5px; } h3 { text-align: center; } img { width: 13px; } }');
+                    myWindow.document.write('</style>');
+                    myWindow.document.write("<div style='font-family: DM Serif Text, serif;'>");
+                    myWindow.document.write("<div id='myDiv'>");
+                    myWindow.document.write("<img style='width: 25px;' src='img/ipakyoli.png'>");
+                    myWindow.document.write("<h3>IPAK YO'LI</h3>");
+                    myWindow.document.write("</div>");
+                    myWindow.document.write("<div class='flex-container'>");
+                    myWindow.document.write("<div class='narxi'>");
+                    myWindow.document.write("<h3>" + data.map.goods.summa + "</h3>");
+                    myWindow.document.write("</div>");
+                    myWindow.document.write("<div class='barcode-container'>");
+                    myWindow.document.write("<svg id='barcode'></svg>");
+                    myWindow.document.write('<script src="plugins/JSBarcode/jsbarcode.js"/>');
+                    myWindow.document.write('<\/script>');
+                    myWindow.document.write('<script>');
+                    myWindow.document.write("JsBarcode('#barcode', '" + data.map.goods.articul + "', { fontSize: '14px', height: '100%' });");
+                    myWindow.document.write('<\/script>');
+                    myWindow.document.write("</div>");
+                    myWindow.document.write("</div>");
+                    myWindow.document.write("<h3 style='font-size: 20px'>" + data.map.goods.name + "</h3>");
+                    myWindow.document.write("</div>");
+                }
+            });
+            event.preventDefault();
+            myWindow.document.close();
+            myWindow.focus();
+        }
+    </script>
+    <script>
+        const printButton = document.querySelector('.print-button');
+
+// Print PDF.
+printButton.addEventListener('click', () => {
+	window.print();
+});
+    </script>
+   <script src="/main.js"></script>
+</body>
+
+</html>
